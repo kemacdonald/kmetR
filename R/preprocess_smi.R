@@ -15,7 +15,7 @@ preprocess_smi <- function(d,
                            avg_eyes = TRUE) {
 
   ## average the eyes
-  if (avg_eye == TRUE) {
+  if (avg_eyes == TRUE) {
     # round to the nearest pixel
     d$x <- round(rowMeans(d[,c("lx","rx")], na.rm=TRUE))
     d$y <- round(rowMeans(d[,c("ly","ry")], na.rm=TRUE))

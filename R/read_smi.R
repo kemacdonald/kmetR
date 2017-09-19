@@ -32,7 +32,7 @@ read_smi <- function (file_name, file_path, length_header = 40) {
 
   ## DATA CLEANING
   # read in data and get rid of header rows
-  all.d <- read_tsv(file_name, skip = header.rows,
+  all.d <- read_tsv(file, skip = header.rows,
                     col_types = cols(Time = "c"))
 
   ## split data into messages and data
@@ -41,16 +41,16 @@ read_smi <- function (file_name, file_path, length_header = 40) {
   d <- all.d %>% filter(all.d$Type=="SMP")
 
   # convert to numeric here
-  d$rx <- to.n(d$"R POR X [px]")
-  d$ly <- to.n(d$"L POR Y [px]")
-  d$ry <- to.n(d$"R POR Y [px]")
-  d$lx <- to.n(d$"L POR X [px]")
+  d$rx <- to_n(d$"R POR X [px]")
+  d$ly <- to_n(d$"L POR Y [px]")
+  d$ry <- to_n(d$"R POR Y [px]")
+  d$lx <- to_n(d$"L POR X [px]")
 
   #clean up data frame
   d %<>%
     select(Time, lx, ly, rx, ry) %>%
     rename(t = Time) %>%
-    mutate(t = to.n(t))
+    mutate(t = to_n(t))
 
   ## Now get "messages" - about the stimulus that's being presented
   all.d$rawx <- all.d$"L Raw X [px]"
@@ -61,7 +61,7 @@ read_smi <- function (file_name, file_path, length_header = 40) {
     rename(t = Time,
            msg = rawx) %>%
     mutate(stimulus = gsub("# Message: ", "",msg),
-           t = to.n(t))
+           t = to_n(t))
 
   ## merge stimulus information back into d frame as a column
   d$stimulus <- sapply(d$t,
