@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1505839624410.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "C470F8F5",
+    "lastKnownWriteTime" : 1505839679,
+    "last_content_update" : 1505839679441,
+    "path" : "~/Documents/Projects/SPEED-ACC/R/helper_functions/libraries_and_functions.R",
+    "project_path" : null,
+    "properties" : {
+        "cursorPosition" : "344,3",
+        "scrollLine" : "337"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
