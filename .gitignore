@@ -1,0 +1,8 @@
+.RData
+.Rhistory
+.png
+.mov
+*cache/
+.Rproj.user
+.DS_store
+
