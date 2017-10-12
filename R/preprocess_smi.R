@@ -11,6 +11,13 @@
 
 preprocess_smi <- function(d, x_max = 1680, y_max = 1050, samp_rate = 120, avg_eyes = TRUE) {
 
+  # remove bad looks before averaging the eyes
+  d %<>%
+    mutate(rx = ifelse(rx < 1 | rx > 1919, NA, rx),
+           lx = ifelse(lx < 1 | lx > 1919, NA, lx),
+           ry = ifelse(ry < 1 | ry > 1079, NA, ry),
+           ly = ifelse(ly < 1 | ly > 1079, NA, ly))
+
   ## average the eyes
   if (avg_eyes == TRUE) {
     # round to the nearest pixel
